@@ -227,46 +227,10 @@ const desconto = calcularDesconto(valorCompra);
 //Faça um programa que receba a idade de dez pessoas e que calcule e mostre a quantidade de pessoas com idade maior ou igual a 18 anos.
 
 let pessoas = [
-    {
-        nome: "Caio",
-        idade: 25
-    },
-    {
-        nome: "Manu",
-        idade: 23
-    },
-    {
-        nome: "Cristina",
-        idade: 40
-    },
-    {
-        nome: "Eli",
-        idade: 32
-    },
-    {
-        nome: "Caique",
-        idade: 20
-    },
-    {
-        nome: "Malu",
-        idade: 16
-    },
-    {
-        nome: "Isa",
-        idade: 21
-    },
-    {
-        nome: "Maria",
-        idade: 15
-    },
-    {
-        nome: "Marcelo",
-        idade:20
-    },
-    {
-        nome: "Luiz",
-        idade: 17
-    },
+    { nome: "Caio", idade: 25 }, { nome: "Manu", idade: 23 }, { nome: "Cristina", idade: 40 },
+    { nome: "Eli", idade: 32 }, { nome: "Caique", idade: 20 }, { nome: "Malu", idade: 16 },
+    { nome: "Isa", idade: 21 }, { nome: "Maria", idade: 15 }, { nome: "Marcelo", idade: 20 },
+    { nome: "Luiz", idade: 17 },
 ]
 
 function findTheBigger(obj) {
@@ -292,29 +256,29 @@ function findTheBigger(obj) {
 // Acima de 61 anos
 
 const humanos = [
-    {name: "João", age: 16}, {name: "Maria", age: 31}, {name: "Joaquim", age: 70}, 
-    {name: "Paulo", age: 58}, {name: "Antonio", age: 35}, {name: "José", age: 23},
-    {name: "Ana", age: 43}, {name: "Leticia", age: 28}, {name: "Manu", age: 15}, 
-    {name: "Bianca", age: 18}, {name: "Vitoria", age: 48}, {name: "Josefa", age: 65},
-    {name: "Lurdes", age: 42}, {name: "Mariano", age: 52}, {name: "Caio", age: 25},
+    { name: "João", age: 16 }, { name: "Maria", age: 31 }, { name: "Joaquim", age: 70 },
+    { name: "Paulo", age: 58 }, { name: "Antonio", age: 35 }, { name: "José", age: 23 },
+    { name: "Ana", age: 43 }, { name: "Leticia", age: 28 }, { name: "Manu", age: 15 },
+    { name: "Bianca", age: 18 }, { name: "Vitoria", age: 48 }, { name: "Josefa", age: 65 },
+    { name: "Lurdes", age: 42 }, { name: "Mariano", age: 52 }, { name: "Caio", age: 25 },
 ]
 
 function numberOfPeopleByAgeGroup(obj) {
     // let menorQue15 = ''
-    let until15 = obj.filter((user) => user.age <= 15 )
+    let until15 = obj.filter((user) => user.age <= 15)
     // console.log(obj.age);
     console.log(`Pessoas com menos de 15: ${until15.length}`);
 
     let from16To30 = obj.filter((user) => user.age > 15 && user.age <= 30)
     console.log(`Pessoas na faixa dos 16 aos 30: ${from16To30.length}`);
 
-    let from31To45 = obj.filter((user) => user.age > 30 && user.age <= 45 )
+    let from31To45 = obj.filter((user) => user.age > 30 && user.age <= 45)
     console.log(`Pessoas na faixa dos 31 aos 45: ${from31To45.length}`);
 
-    let from46To60 = obj.filter((user) => user.age > 30 && user.age <= 45 )
+    let from46To60 = obj.filter((user) => user.age > 30 && user.age <= 45)
     console.log(`Pessoas na faixa dos 46 aos 60: ${from46To60.length}`);
 
-    let over60 = obj.filter((user) => user.age > 60 )
+    let over60 = obj.filter((user) => user.age > 60)
     console.log(`Pessoas acima de 60 anos: ${over60.length}`);
 
 }
@@ -323,8 +287,102 @@ function numberOfPeopleByAgeGroup(obj) {
 function percentageLessThan15AndGreaterThan61(list) {
 
     let amountInRange = list.filter((people) => people.age <= 15 || people.age > 60).length
-    let totalPercentage = (amountInRange * list.length)/100
-    console.log('Porcentagem da primeira e última faixa no total',totalPercentage);
+    let totalPercentage = (amountInRange * list.length) / 100
+    console.log('Porcentagem da primeira e última faixa no total', totalPercentage);
 }
 
 // percentageLessThan15AndGreaterThan61(humanos)
+
+
+// Escreva um aplicativo que recebe inteiro e mostra os números pares e ímpares (separados), de 1 até esse inteiro
+
+function evenAndOdd(int) {
+    let par = []
+    let impar = []
+    for (let i = 1; i <= int; i++) {
+        if (i % 2 == 0) {
+            par.push(i)
+        } else {
+            impar.push(i)
+        }
+    }
+    console.log(`Os números ${par} são pares`);
+    console.log(`Os números ${impar} são impares`);
+}
+
+// evenAndOdd(15)
+
+//Escreva um programa que lê o tamanho do lado de um quadrado e imprime um quadrado daquele tamanho com asteriscos. Seu programa deve usar laços de repetição e funcionar para quadrados com lados de todos os tamanhos entre 1 e 20.
+
+function squareOfAsterisks(param) {
+    let x = []
+    let y = []
+
+
+    if (param >= 1 && param <= 20) {
+
+        //     for (let i = 0; i < param; i++) {
+        //         y[i] = []
+        //        for (let index = 0; index < param; index++) {
+        //         y[i][index] = '*'
+        //     }
+        // }
+
+        // Utilizando array com push
+
+        for (let i = 1; i < param; i++) {
+            for (let index = 1; index <= param; index++) {
+                y.push('*')
+            }
+        }
+        x.push(y)
+
+    } else {
+        return "Número passado não é válido para aplicação"
+    }
+    //console.log(x); // utilizando o push
+    console.log(y); // sem utilizar o push
+}
+
+// squareOfAsterisks(5);
+
+// Métodos dentro de objeto
+
+let objeto = {
+    soma: (a, b) => a + b,
+    subtracao: (a, b) => a - b,
+    divisao: (a, b) => a / b,
+    multiplicacao: (a, b) => a * b,
+}
+// console.log(objeto.soma(1,2));
+// console.log(objeto.subtracao(1,2));
+// console.log(objeto.divisao(1,2));
+// console.log(objeto.multiplicacao(1,2));
+
+
+// Escreva um programa que lê o tamanho do lado de um quadrado e imprime um quadrado daquele tamanho com asteriscos e espaços em branco. Seu programa deve funcionar para quadrados com lados de todos os tamanhos entre 1 e 20.
+
+//Para lado igual a 5:
+// *****
+// *    *
+// *    *
+// *    *
+// *****
+
+function squareOfAsterisksDifferent(param) {
+    for (let i = 0; i < param; i++) {
+        let linha = "";
+        for (let j = 0; j < param; j++) {
+          if (j == 0 || j == param - 1 || i == 0 || i == param - 1) {
+            // Adiciona asterisco nas bordas do quadrado
+            linha += "*";
+          } else {
+            // Adiciona espaço em branco no interior do quadrado
+            linha += " ";
+          }
+        }
+        console.log(linha);
+      }
+}
+
+// squareOfAsterisksDifferent(5)
