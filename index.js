@@ -386,3 +386,240 @@ function squareOfAsterisksDifferent(param) {
 }
 
 // squareOfAsterisksDifferent(5)
+
+//Faça um programa que recebe a altura de um triangulo em um número inteiro e imprima-o utilizando asteriscos. Veja o Exemplo:
+
+//Entrada: 5
+
+// *
+// **
+// ***
+// ****
+// *****
+
+const triangle = (altura) => {
+    let result = ''
+    for (let i = 0; i < altura; i++) {
+        result += '*'
+        console.log(result);
+    }     
+}
+
+// triangle(6)
+
+
+// Uma loja utiliza o código V para transação à vista e P para transação a prazo. Faça um programa que receba código e valor de 15 transações usando laços de repetição. Calcule e mostre:  
+
+// O valor total das compras à vista
+// O valor total das compras a prazo .   
+// O valor total das compras efetuadas
+// O valor da primeira prestação das compras a prazo, sabendo-se que essas serão pagas em três vezes
+
+const shopping = [
+    {valor: 100, pgmt: 'P'},{valor: 200, pgmt: 'V'},{valor: 300, pgmt: 'P'},
+    {valor: 400, pgmt: 'V'},{valor: 500, pgmt: 'P'},{valor: 600, pgmt: 'V'},
+    {valor: 700, pgmt: 'P'},{valor: 800, pgmt: 'V'},{valor: 900, pgmt: 'P'},
+    { valor: 1000, pgmt: 'P'},{ valor: 1100, pgmt: 'P'},{ valor: 1200, pgmt: 'P'},
+    { valor: 1300, pgmt: 'V'},{ valor: 1400, pgmt: 'P'},{ valor: 1500, pgmt: 'V'},
+]
+
+const shoppingTransaction = (arr) => {
+    
+    let vendasP = arr.filter(obj => obj.pgmt === 'P');
+    let vendasParceladas = []
+    for (const value of arr) {
+        if(value.pgmt === 'P'){
+            vendasParceladas.push(value.valor)
+        }     
+    }
+
+    console.log('vendasParceladas',vendasParceladas);
+    let primeiraParcela
+    for (const value of vendasParceladas) {
+        primeiraParcela = (value/3).toFixed(2)
+        console.log('primeira parcela: ', primeiraParcela);
+    }
+
+    let somaVendasP = vendasP.reduce((acumulador, { valor, pgmt}) => acumulador + valor, 0);
+    console.log('soma das venda Parceladas ===>', somaVendasP);
+
+    let vendasV = arr.filter(obj => obj.pgmt === 'V');
+    let somaVendasV = vendasV.reduce((acumulador, { valor, pgmt}) => acumulador + valor, 0);
+    console.log('soma das vendas a vista ===>', somaVendasV);
+
+    let somaTotal = somaVendasP + somaVendasV
+    console.log('Soma total ===> ',somaTotal);
+}
+// shoppingTransaction(shopping)
+
+
+//Faça um programa que receba a idade, altura e o peso de 25 pessoas, Calcule e mostre:
+
+// A quantidade de pessoas com idade superior a 50 anos;
+// A média das Alturas das pessoas com idade entre 10 e 20 anos
+// A porcentagem das pessoas com peso inferior a 40 quilos entre todas as pessoas analisadas.  
+
+const pessoas2 = [
+    {idade: 25, altura: 1.75, peso: 70},{idade: 25, altura: 2.0, peso: 100},{idade: 66, altura: 1.60, peso: 70},
+    {idade: 29, altura: 1.55, peso: 69},{idade: 45, altura: 1.97, peso: 89},{idade: 85, altura: 1.53, peso: 59},
+    {idade: 37, altura: 1.87, peso: 78},{idade: 36, altura: 1.63, peso: 55},{idade: 15, altura: 1.60, peso: 60},
+    {idade: 70, altura: 1.66, peso: 90},{idade: 98, altura: 1.73, peso: 68},{idade: 25, altura: 1.80, peso: 90},
+    {idade: 18, altura: 1.69, peso: 95},{idade: 54, altura: 1.89, peso: 90},{idade: 35, altura: 1.92, peso: 88},
+    {idade: 10, altura: 1.40, peso: 38},{idade: 14, altura: 1.54, peso: 60},{idade: 75, altura: 1.59, peso: 90},
+    {idade: 55, altura: 1.96, peso: 60},{idade: 67, altura: 1.75, peso: 70},{idade: 65, altura: 1.69, peso: 60},
+    {idade: 15, altura: 1.77, peso: 89},{idade: 59, altura: 1.89, peso: 87},{idade: 35, altura: 1.80, peso: 80},
+    {idade: 47, altura: 1.79, peso: 80},
+]
+
+const calculateWeightHeightAndAge = (obj) => {
+    
+    let peopleOver50 = obj.filter(arr => arr.idade >= 50 ).length
+    console.log('Quantidade de pessoas com mais que 50 anos ===>',peopleOver50);
+
+    let peopleBetween10And20 = obj.filter(arr => arr.idade >= 10 && arr.idade <= 20)
+    console.log('entre 10 e 20 anos',peopleBetween10And20);
+
+    let averageHeightBettewen10And20 = peopleBetween10And20.reduce((acumulador, {valor, altura}) => acumulador + altura, 0 )/peopleBetween10And20.length
+
+    console.log('A média de altura das pessoas entre 10 e 20 anos é de: ',averageHeightBettewen10And20);
+    
+    // averageHeightBettewen10And20 = peopleBetween10And20.altura
+
+    let peopleWeigthLess40 = obj.filter(arr => arr.peso < 40).length
+    console.log('pessoas com menos de 40 kg ==> ',peopleWeigthLess40);
+    let percentageWeigthLess40 = (peopleWeigthLess40*obj.length)/100
+    console.log('A porcentagem de pessoas com menos de 40 kg é de ===> ',percentageWeigthLess40);
+
+}
+
+// calculateWeightHeightAndAge(pessoas2)
+
+//Faça um programa que receba a idade e o peso de sete pessoas. Calcule e mostre:
+
+// A quantidade de pessoas com mais de 90 quilos;
+// A média das idades das sete pessoas;  
+
+const pessoas3 = [
+    {idade: 55, peso: 120},{idade: 67, peso: 70},{idade: 65, peso: 60},
+    {idade: 15, peso: 89},{idade: 59, peso: 110},{idade: 35, peso: 88},
+    {idade: 47, peso: 90},
+]
+
+const toFindOver90Kg = (obj) => {
+    const peopleOver90 = obj.filter(prop => prop.peso >= 90).length
+    console.log('A quantidade de pessoas acima dos 90Kg é de ===>',peopleOver90);
+    let averageAge = obj.reduce((acumulador, {idade, peso})=>acumulador + idade, 0)/obj.length
+    console.log('A média de idade entre o grupo selecionado é de ===>', averageAge);
+
+}
+
+// toFindOver90Kg(pessoas3)
+
+
+// Faça um programa que receba a idade, o peso, a altura, a cor dos olhos (A – Azul, P- Preto, V- Verde e C- Castanho) e a cor dos cabelos (P – Preto, C- Castanho, L – Louro e R-Ruivo) de 20 pessoas e que calcule e mostre: A quantidade de pessoas com idade superior a 50 anos e peso inferior a 60 quilos;
+
+// A média das idades das pessoas com altura inferior a 1,50;
+// A porcentagem de pessoas com olhos azuis entre a s pessoas analisadas;
+// A quantidade de pessoas ruivas que não possuem olhos azuis;  
+
+const pessoas4 = [
+    {idade: 85, altura: 1.53, peso: 59, corCabelo: 'C', corOlhos: 'C'},
+    {idade: 37, altura: 1.87, peso: 78, corCabelo: 'P', corOlhos: 'A'},
+    {idade: 36, altura: 1.63, peso: 55, corCabelo: 'C', corOlhos: 'C'},
+    {idade: 15, altura: 1.60, peso: 60, corCabelo: 'R', corOlhos: 'A'},
+    {idade: 70, altura: 1.66, peso: 90, corCabelo: 'L', corOlhos: 'C'},
+    {idade: 98, altura: 1.73, peso: 58, corCabelo: 'C', corOlhos: 'C'},
+    {idade: 25, altura: 1.50, peso: 50, corCabelo: 'R', corOlhos: 'A'},
+    {idade: 18, altura: 1.69, peso: 95, corCabelo: 'C', corOlhos: 'P'},
+    {idade: 54, altura: 1.89, peso: 90, corCabelo: 'C', corOlhos: 'C'},
+    {idade: 35, altura: 1.92, peso: 88, corCabelo: 'P', corOlhos: 'V'},
+    {idade: 10, altura: 1.40, peso: 38, corCabelo: 'C', corOlhos: 'C'},
+    {idade: 14, altura: 1.54, peso: 60, corCabelo: 'P', corOlhos: 'A'},
+    {idade: 75, altura: 1.59, peso: 90, corCabelo: 'C', corOlhos: 'V'},
+    {idade: 55, altura: 1.96, peso: 60, corCabelo: 'L', corOlhos: 'A'},
+    {idade: 67, altura: 1.75, peso: 70, corCabelo: 'L', corOlhos: 'V'},
+    {idade: 65, altura: 1.69, peso: 60, corCabelo: 'R', corOlhos: 'A'},
+    {idade: 15, altura: 1.47, peso: 60, corCabelo: 'R', corOlhos: 'P'},
+    {idade: 59, altura: 1.89, peso: 87, corCabelo: 'C', corOlhos: 'C'},
+    {idade: 35, altura: 1.80, peso: 80, corCabelo: 'L', corOlhos: 'A'},
+    {idade: 47, altura: 1.79, peso: 80, corCabelo: 'P', corOlhos: 'C'},
+]
+
+const aLotOfThings = (obj) => {
+    const over50 = obj.filter(prop => prop.idade > 50 && prop.peso < 60).length
+    console.log('A quantidadede pessoas com mais de 50 anos e menos de 60 kg é de ==>',over50);
+    const heightLessThan1_5 = obj.filter(prop => prop.altura < 1.5)
+
+    const averageOfAgeOfTheHeightLessThan1_5 = heightLessThan1_5.reduce((acumulator , {idade})=> acumulator + idade, 0)/ heightLessThan1_5.length
+    console.log('A média de idade entre as pessoas com menos de 1,5 de altura é de ===>',averageOfAgeOfTheHeightLessThan1_5);
+    const amountOfPeopleWithBlueEyes = obj.filter(prop => prop.corOlhos === 'A').length
+    // console.log(amountOfPeopleWithBlueEyes);
+    const percentageOfPeopleWithBlueEyes = (amountOfPeopleWithBlueEyes*obj.length)/100
+    console.log('A porcentagem de pessoas com olhos azuis ie de ===>',percentageOfPeopleWithBlueEyes);
+
+    const amountOfRedheadedPeopleWithoutBlueEyes = obj.filter(prop => prop.corCabelo === "R" && prop.corOlhos !== "A").length
+    console.log('A quantidade de pessoas ruivas sem olhos azuis é de ==>',amountOfRedheadedPeopleWithoutBlueEyes);
+
+} 
+// aLotOfThings(pessoas4)
+
+
+// Faça um programa que receba dez números e usando laços de repetição calcule e mostre a quantidade de números entre 30 e 90.  
+
+const numbers = [10,32,89,69,80,12,9,74,55,94,]
+
+const numbersBetween30and90 = (arr) => {
+    let between30and90 = []
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] >= 30 && arr[i] <= 90) {
+            between30and90.push(arr[i])
+        }
+        
+    }
+    console.log('A quantidade de números entre 30 e 90 é de ===>',between30and90.length);
+}
+
+// numbersBetween30and90(numbers)
+
+//Faça um programa que receba dez idades, pesos e Alturas e que calcule e mostre:
+
+// A média das idades das dez pessoas;
+// A quantidade de pessoas com peso superior a 90 quilos e altura inferior a 1,50;
+// A porcentagem de pessoas com idade entre 10 e 30 anos entre as pessoas que medem mais de 1,90; 
+
+const pessoas5 = [
+    {idade: 10, altura: 1.40, peso: 38,},{idade: 14, altura: 1.54, peso: 60,},{idade: 75, altura: 1.59, peso: 90,},
+    {idade: 17, altura: 1.96, peso: 60,},{idade: 67, altura: 1.75, peso: 70,},{idade: 65, altura: 1.69, peso: 60,},
+    {idade: 15, altura: 1.77, peso: 89,},{idade: 28, altura: 1.99, peso: 87,},{idade: 35, altura: 1.48, peso: 95,},
+    {idade: 47, altura: 1.49, peso: 91,},
+]
+
+const aboutAGroup = (obj) => {
+    let averageAge = obj.reduce((acumulator, {idade})=> acumulator + idade,0)/obj.length
+    console.log('A média de idade do grupo é de ===>',averageAge, 'anos');
+    let amountOfPeopleWithWeightOver90 = obj.filter(prop => prop.peso > 90 && prop.altura < 1.5).length
+    console.log('A quantidade de pessoas com mais de 90 kg e menos de 1.5 de altura é de ===>',amountOfPeopleWithWeightOver90);
+    let percentageOfPeopleWithMoreThan10andthan30YearsAndMoreThan1_9Tall = (obj.filter(prop => prop.idade > 10 && prop.idade < 30 && prop.altura > 1.9).length)/obj.length
+    console.log('A porcentagem de pessoas com mais de 10 e menos que 30 anos com mais de 1.9 de altura é de ===>',percentageOfPeopleWithMoreThan10andthan30YearsAndMoreThan1_9Tall, '%');
+}
+// aboutAGroup(pessoas5)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
