@@ -604,11 +604,81 @@ const aboutAGroup = (obj) => {
 }
 // aboutAGroup(pessoas5)
 
+//Faça um programa que receba a idade e o sexo de sete pessoas e que calcule e mostre:
+
+// A idade média do grupo;
+// A idade média das mulheres;
+// A idade média dos homens; 
 
 
+const pessoas6 = [
+    {idade: 55, sexo: 'M'},{idade: 67, sexo: 'M'},{idade: 65, sexo: 'F'},
+    {idade: 15, sexo: 'F'},{idade: 59, sexo: 'F'},{idade: 35, sexo: 'M'},
+    {idade: 47, sexo: 'M'},
+]
+
+const averageAgeAndGender = (arr) =>{
+    let averageGroupAge = arr.reduce((acumulator,{idade})=>acumulator + idade,0)/arr.length
+    console.log('A idade média do grupo é de ==>',averageGroupAge, 'anos');
+    let amountWomen = arr.filter(prop => prop.sexo === 'F')
+    let averageOfWomen = amountWomen.reduce((acumulator, {idade})=>acumulator + idade,0)/amountWomen.length
+    console.log('A idade média das mulheres do grupo é de ==>', averageOfWomen.toFixed(2), 'anos');
+    let amountMen = arr.filter(prop => prop.sexo === 'M')
+    let averageOfMen = amountMen.reduce((acumulator, {idade})=>acumulator + idade,0)/amountMen.length
+    console.log('A idade média dos homens do grupo é de ==>', averageOfMen.toFixed(2), 'anos');
+
+}
+// averageAgeAndGender(pessoas6)
 
 
+//Faça um programa que receba o valor de um carro e mostre uma tabela com os seguintes dados: preço final, quantidade de parcelas e valor da parcela. Considere o seguinte:
 
+// O preço final para compra à vista tem um desconto de 20%;
+// A quantidades de parcelas pode ser: 6, 12, 18, 24, 30, 36, 42, 48, 54 e 60.
+// Os percentuais de acréscimo seguem a tabela a seguir. 
+
+// Quantidade de parcelas	Percentual de acréscimo sobre o preço final
+// 6	                    3%
+// 12	                    6%
+// 18	                    9%
+// 24	                    12%
+// 30	                    15%
+// 36	                    18%
+// 42	                    21%
+// 48	                    24%
+// 54	                    27%
+// 60	                    30% 
+
+
+const carFinancing = (value) =>{
+    const parcelas = [6,12,18,24,30,36,42,48,54,60]
+    let valorCarro = `O valor do carro é R$ ${value}`
+    console.log(valorCarro);
+    let table = `O valor total á vista é R$ ${value- (value*0.2 )}\n`
+
+    for (let i = 0; i < parcelas.length; i++) {
+        table += `O valor total parcelado por ${parcelas[i]} é de: R$ ${(parcelas[i]/200) * value + value} e cada parcela sai por R$ ${(((parcelas[i]/200) * value + value)/parcelas[i]).toFixed(2)}\n`
+    }
+    return table
+}
+// console.log(carFinancing(25000));
+
+
+//Faça um programa que receba um conjunto de valores inteiros e positivos, com o intervalo formado pelo número imprima na tela todos os números primos existentes
+
+const nums = [1,30,27,90,77,54]
+
+const primeNumbersInInterval =(arr)=>{
+
+}
+
+function isPrime(num) {
+    for (let i = 2; i < num; i++)
+        if (num % i === 0) {
+            return false
+        };
+    return num > 1;
+}
 
 
 
